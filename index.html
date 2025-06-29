@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gerador de senhas</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-[#0A0A0F] flex items-center justify-center min-h-screen flex-col gap-6">
+    <section
+      class="bg-[#1A1A2E] w-[400px] h-auto rounded-lg shadow-lg py-6 px-4 border-2 border-[#212E4E]"
+    >
+      <div class="w-full flex items-center justify-center flex-col">
+        <span
+          class="bg-[#00ff881f] opacity-100 w-16 h-16 rounded-full flex items-center justify-center mb-4"
+        >
+          <img src="src/image/icon-protect.svg" alt="icon protect" />
+        </span>
+        <h1 class="text-white font-bold text-2xl">Gerador de Senhas</h1>
+        <p class="text-gray-400 text-sm text-center mt-2">
+          Crie senhas seguras e personalizadas
+        </p>
+      </div>
+
+      <div class="flex flex-col">
+        <span class="flex items-center justify-between mt-4 w-full relative">
+          <input
+            type="text"
+            class="mt-4 p-2 rounded-md bg-[#0A0A0F] text-white border border-[#16213E] w-full focus:outline-none focus:border-[#00ff88] transition-colors duration-300"
+            placeholder="Clique em 'Gerar Senha'"
+            id="password"
+            readonly
+          />
+          <span onclick="copyPassword()">
+            <img
+              src="src/image/icon-copy.svg"
+              alt="Icon copiar"
+              class="cursor-pointer absolute right-2 bottom-3 w-5 h-5"
+            />
+          </span>
+        </span>
+
+        <span class="flex items-center justify-between mt-2 w-full">
+          <p class="text-gray-100 text-sm mt-2 py-2">Comprimento</p>
+          <p class="text-gray-100 text-sm mt-2 py-2" id="counter"></p>
+        </span>
+        <input
+          type="range"
+          name="slider"
+          id="length"
+          class="mt-4 w-full h-2 bg-[#16213E] rounded-lg cursor-pointer"
+          min="6"
+          max="32"
+          value="10"
+        />
+        <span class="flex items-center gap-2 mt-6 w-full">
+          <input
+            type="checkbox"
+            id="uppercase"
+            class="cursor-pointer rounded border border-[#16213E] w-4 h-4"
+          />
+          <p class="text-gray-100 text-sm">Letras maiúsculas (A-Z)</p>
+        </span>
+        <span class="flex items-center gap-2 mt-6 w-full">
+          <input
+            type="checkbox"
+            id="lowercase"
+            class="cursor-pointer rounded border border-[#16213E] w-4 h-4"
+          />
+          <p class="text-gray-100 text-sm">Letras minúsculas (a-z)</p>
+        </span>
+        <span class="flex items-center gap-2 mt-6 w-full">
+          <input
+            type="checkbox"
+            id="numbers"
+            class="cursor-pointer rounded border border-[#16213E] w-4 h-4"
+          />
+          <p class="text-gray-100 text-sm">Números (0-9)</p>
+        </span>
+        <span class="flex items-center gap-2 mt-6 w-full">
+          <input
+            type="checkbox"
+            id="symbols"
+            class="cursor-pointer rounded border border-[#16213E] w-4 h-4"
+          />
+          <p class="text-gray-100 text-sm">Símbolos (!@#$%&*)</p>
+        </span>
+
+        <button
+          class="flex items-center justify-center mt-6 w-full bg-[#00ff88] py-3 rounded-md hover:bg-[#00ff88b3] transition-colors duration-300"
+          onclick="generatePassword()"
+        >
+          <img
+            src="src/image/icon-key.svg"
+            alt="Icon chave"
+            class="w-5 h-5 mr-2"
+          />
+          <span class="text-[#0A0A0F] font-bold text-sm">Gerar Senha</span>
+        </button>
+      </div>
+    </section>
+    <span class="text-gray-400 text-xs text-center mt-4 block">
+      Desenvolvido por
+      <a href="https://github.com/otiagopereira" target="_blank" rel="noopener noreferrer" class="text-[#00ff88]"
+        >Tiago Pereira</a
+      >
+    </span>
+
+    <div id="alerta" class="hidden fixed top-8 left-1/2 -translate-x-1/2 bg-[#1A1A2E] border border-[#00ff88] rounded-lg shadow-lg px-6 py-4 flex flex-col items-center z-50">
+    <span class="bg-[#0A0A0FAF] w-16 h-16 rounded-full flex items-center justify-center mb-2">
+        <img src="src/image/icon-error.svg" alt="Alerta" class="w-8 h-8" id="alerta-icone" />
+    </span>
+    <p id="alerta-msg" class="text-white text-base font-semibold text-center">Mensagem de alerta</p>
+</div>
+  </body>
+  <script src="src/js/script.js"></script>
+</html>
